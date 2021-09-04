@@ -17,7 +17,7 @@
     "compileTestLint": "npm run compile && npm run test && npm run lint",
     "syncLayer": "cp ./package.json ./dependency-layer/nodejs && cd ./dependency-layer/nodejs && rm -rf node_modules && npm i --production",
     "prerunApiLocal": "npm run syncLayer",
-    "runApiLocal": "npm run compileAndWatch & sam local start-api && fg",
+    "runApiLocal": "npm run compileAndWatch & sam local start-api --template ./infra-templates/master-template.yaml && fg",
     "predeploy": "npm run compileTestLint && npm run syncLayer",
     "deploy": "sam deploy",
     "installHusky": "husky install"
