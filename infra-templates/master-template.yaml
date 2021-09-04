@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Master template is the entrypoint of deployment.
+
+Resources:
+  LambdaTemplate:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ./lambda-template.yaml
+
+  DynamoTemplate:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ./dynamo-template.yaml
+
+

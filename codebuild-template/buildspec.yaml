@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - git checkout $BRANCH_NAME
+      - npm install
+  build:
+    commands:
+      - npm run deploy
+  post_build:
+    commands:
+      - echo Build completed

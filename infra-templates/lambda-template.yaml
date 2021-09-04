@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Lambda nested template
+
+Globals:
+  Function:
+    Timeout: 120
+    Runtime: nodejs14.x
+    AutoPublishAlias: latest
+    Layers:
+      - !Ref DependencyLayer
+
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../dist/hello-world/
+      Handler: app.handler
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: get
+  
+  DependencyLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+        LayerName: sam-app-dependencies
+        Description: Dependencies for sam app [temp-units-conv]
+        ContentUri: ../dependency-layer/
+        CompatibleRuntimes:
+          - nodejs14.x
+        LicenseInfo: 'MIT'
+        RetentionPolicy: Retain
