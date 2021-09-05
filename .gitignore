@@ -125,7 +125,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Build directories
 dist/
 dependency-layer/
+.aws-sam/
 
 # End of https://www.gitignore.io/api/osx,node,linux,windows

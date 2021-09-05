@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API infra-templates:HelloWorldFunction",
+            "preLaunchTask": "npm: prepareDebugging",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "${workspaceFolder}/infra-templates/lambda-template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "api": {
+                "path": "/hello",
+                "httpMethod": "get",
+                "payload": {
+                    "json": {}
+                }
+            }
+        }
+    ]
+}

@@ -3,8 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "rootDir": "./src",
-    "outDir": "./dist/",
-    "sourceMap": true,
+    "outDir": "./dist",
+    "sourceMap": false,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
@@ -20,7 +20,6 @@
     "types": ["node", "jest"],
     "esModuleInterop": true
   },
-  "exclude": [
-    "**/*.spec.ts"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
