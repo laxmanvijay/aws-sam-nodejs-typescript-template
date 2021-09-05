@@ -14,8 +14,8 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ../dist/hello-world/
-      Handler: app.handler
+      CodeUri: ../dist/
+      Handler: hello-world/app.handler
       Events:
         HelloWorld:
           Type: Api

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CHECK_IP_URL } from './constants';
+import { CHECK_IP_URL } from '../constants/constants';
 
 export interface Response {
     statusCode: number;
