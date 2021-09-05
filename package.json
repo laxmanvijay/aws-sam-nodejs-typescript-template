@@ -11,6 +11,7 @@
   },
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage",
     "lint": "eslint 'src/**/*.ts'",
     "compile": "tsc",
     "compileAndWatch": "tsc -w --preserveWatchOutput",
@@ -20,8 +21,7 @@
     "prerunApiLocal": "npm run syncLayer",
     "runApiLocal": "npm run compileAndWatch & sam local start-api --template ./infra-templates/master-template.yaml && fg",
     "predeploy": "npm run compileTestLint && npm run syncLayer",
-    "deploy": "sam deploy",
-    "installHusky": "husky install"
+    "deploy": "sam deploy"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -39,6 +39,14 @@
     "eslint-plugin-import": "^2.24.2",
     "husky": "^7.0.2",
     "jest": "^27.1.0",
+    "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.1",
     "typescript": "^4.4.2"
-  }
+  },
+  "pre-commit": [
+    "compileTestLint"
+  ],
+  "pre-push": [
+    "compileTestLint"
+  ]
 }
