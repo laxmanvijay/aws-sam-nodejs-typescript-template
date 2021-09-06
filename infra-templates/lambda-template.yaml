@@ -27,9 +27,8 @@ Resources:
     Type: AWS::Serverless::LayerVersion
     Properties:
         LayerName: sam-app-dependencies
-        Description: Dependencies for sam app [temp-units-conv]
+        Description: Dependencies for sam app
         ContentUri: ../dependency-layer/
         CompatibleRuntimes:
           - nodejs14.x
-        LicenseInfo: 'MIT'
         RetentionPolicy: Retain
