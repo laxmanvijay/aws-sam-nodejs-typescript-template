@@ -11,6 +11,16 @@ Globals:
       - !Ref DependencyLayer
 
 Resources:
+  HelloWorldApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      Auth:
+        DefaultAuthorizer: LambdaTokenAuthorizer
+        Authorizers:
+          LambdaTokenAuthorizer:
+            FunctionArn: !GetAtt AuthFunction.Arn
+
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -20,8 +30,15 @@ Resources:
         HelloWorld:
           Type: Api
           Properties:
+            RestApiId: !Ref HelloWorldApi
             Path: /hello
             Method: get
+
+  AuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../dist/
+      Handler: authorizer/app.handler
   
   DependencyLayer:
     Type: AWS::Serverless::LayerVersion
