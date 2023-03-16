@@ -5,7 +5,7 @@ Description: Lambda nested template
 Globals:
   Function:
     Timeout: 120
-    Runtime: nodejs14.x
+    Runtime: nodejs18.x
     AutoPublishAlias: latest
     Layers:
       - !Ref DependencyLayer
@@ -30,5 +30,5 @@ Resources:
         Description: Dependencies for sam app
         ContentUri: ../dependency-layer/
         CompatibleRuntimes:
-          - nodejs14.x
+          - nodejs18.x
         RetentionPolicy: Retain
